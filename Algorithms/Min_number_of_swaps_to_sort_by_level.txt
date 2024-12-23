@@ -1,0 +1,31 @@
+Breadth First Search + Cycling Sort + Hashmap Approach
+
+Algorithm
+Initialize:
+a queue to store nodes for BFS traversal.
+a variable totalSwaps to track the total number of operations needed.
+Add the root node to the queue to begin traversal.
+While the queue is not empty:
+Get the size of the current level using the queue size.
+Initialize an array levelValues of size equal to the current level size.
+For each node at the current level:
+Remove the node from the queue.
+Store the node's value in the levelValues array.
+Add the left and right children of the current node to queue if they exist.
+Add minimum swaps needed for the current level to totalSwaps.
+Continue to the next level.
+Return totalSwaps as the final answer.
+For calculating minimum swaps (getMinSwaps function):
+
+Initialize a variable swaps to track swaps needed for the current level.
+Create a copy of the input array as the target array.
+Sort the target array to get the desired order.
+Initialize a map pos to store current positions of values.
+Store positions of all values from the original array in the pos map.
+For each position in the original array:
+If the value at the current position doesn't match the target array:
+Increment swaps counter.
+Get the position of desired value from pos.
+Update the position of the current value in pos.
+Update value in the original array at swapped position.
+Return total swaps needed for current level.

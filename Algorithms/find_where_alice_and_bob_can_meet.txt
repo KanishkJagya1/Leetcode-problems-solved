@@ -1,0 +1,23 @@
+PRIORITY QUEUE
+
+
+Algorithm
+Initialize storeQueries as a 2D array of arrays to store queries for each building.
+
+Initialize maxIndex as a priority queue to track the queries that need to be answered based on building heights.
+
+Initialize result as an array of -1 to store the answers for each query.
+
+Loop through each query:
+
+For each query (a, b):
+If the height of building a is less than building b and a is smaller than b, set result[currQuery] to b (building b is the answer).
+If the height of building a is greater than building b and a is greater than b, set result[currQuery] to a (building a is the answer).
+If a is equal to b, set result[currQuery] to a (both are the same building).
+Otherwise, store the query in storeQueries[max(a, b)] for future processing.
+Loop through each building index index:
+
+While the priority queue maxIndex has elements and the minimum value in maxIndex is smaller than the current building height:
+Set the corresponding query's result in result and pop the element from maxIndex (this query is answered).
+Push new queries from storeQueries[index] into maxIndex, sorting them by height.
+Return the result array containing the answers to all queries.

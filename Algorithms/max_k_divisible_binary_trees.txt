@@ -1,0 +1,19 @@
+DEPTH FIRST APPROACH
+
+Algorithm
+maxKDivisibleComponents function:
+
+Initialize an adjacency list adjList to represent the graph.
+Populate adjList using the given edges.
+Initialize componentCount to 0, which will store the count of k-divisible components.
+Call dfs(0, -1, adjList, values, k, componentCount) starting from node 0 with no parent (-1).
+Return componentCount as the result.
+dfs function:
+
+Initialize sum to 0, representing the sum of node values in the current subtree.
+For each neighborNode of currentNode:
+If neighborNode is not equal to parentNode, recursively call dfs for neighborNode with currentNode as its parent.
+Add the result of the recursive call to sum and take modulo k.
+Add the value of currentNode (nodeValues[currentNode]) to sum and take modulo k.
+If sum is 0, increment componentCount because the current subtree forms a k-divisible component.
+Return sum to allow the parent node to incorporate the result.
