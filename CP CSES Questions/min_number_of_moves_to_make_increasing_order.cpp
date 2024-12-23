@@ -1,29 +1,36 @@
 #include <iostream>
-#include <string.h>
 #include <vector>
 using namespace std;
 
-int minMovesToMakeIncreasing(vector<int> n) {
-    int moves = 0;
-    for(int i = 1 ; i < n.size() ; i++) {
-        if(n[i] < n[i-1]) {
-            moves += n[i-1] - n[i];
-            n[i] = n[i-1];
+// Function to calculate the minimum moves to make the array non-decreasing
+long long minMovesToMakeIncreasing(const vector<int>& arr) {
+    long long moves = 0; // Use long long to prevent overflow
+    int prev = arr[0];   // Track the previous element in the array
+
+    for (int i = 1; i < arr.size(); i++) {
+        if (arr[i] < prev) {
+            // Add the difference to moves
+            moves += prev - arr[i];
+        } else {
+            // Update prev only if current element is greater or equal
+            prev = arr[i];
         }
     }
     return moves;
 }
 
 int main() {
-    int n;
-    cin>>n;
-    cout<< "\n";
-    vector<int> arr(n);
-    for(int i = 0 ; i < n ; i++) {
-        cin>>arr[i];
-    }
-    
-    cout<<minMovesToMakeIncreasing(arr);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
+    int n;
+    cin >> n; // Read the size of the array
+
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i]; // Read array elements
+    }
+
+    cout << minMovesToMakeIncreasing(arr) << endl; // Output the result
     return 0;
 }
